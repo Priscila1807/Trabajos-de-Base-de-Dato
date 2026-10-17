@@ -1,19 +1,16 @@
 <?php
 session_start();
 
-// Si no ha iniciado sesión, redirigir al login
 if (!isset($_SESSION['id_usuario'])) {
     header("Location: ../loginInicio.php");
     exit();
 }
 
-// Incluir la conexión a la base de datos desde la carpeta config
 include '../config/conexion.php';
 
-// Obtener los datos de la sesión actual
 $id_usuario = $_SESSION['id_usuario'];
 
-// Consultar los datos actualizados del usuario y su rol desde la base de datos
+
 $stmt = $conn->prepare("
     SELECT u.nombre, u.apellido, r.nombre AS rol_nombre 
     FROM usuario u 
@@ -35,7 +32,7 @@ if ($datos_usuario = $resultado->fetch_assoc()) {
 }
 $stmt->close();
 
-// Iniciales para el avatar en círculo
+
 function obtenerIniciales($nombre) {
     return mb_strtoupper(mb_substr($nombre, 0, 1));
 }
