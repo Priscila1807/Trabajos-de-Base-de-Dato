@@ -472,7 +472,6 @@ function obtenerIniciales($nombre) {
                     <h5><i class="fa-solid fa-shield-halved"></i> Entregas digitales</h5>
                     <p>Los registros quedan guardados de forma segura para el equipo directivo.</p>
                 </div>
-
             </div>
         </main>
 
