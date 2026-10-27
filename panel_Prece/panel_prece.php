@@ -10,7 +10,6 @@ include '../config/conexion.php';
 
 $id_usuario = $_SESSION['id_usuario'];
 
-
 $stmt = $conn->prepare("
     SELECT u.nombre, u.apellido, r.nombre AS rol_nombre 
     FROM usuario u 
@@ -32,7 +31,6 @@ if ($datos_usuario = $resultado->fetch_assoc()) {
 }
 $stmt->close();
 
-
 function obtenerIniciales($nombre) {
     return mb_strtoupper(mb_substr($nombre, 0, 1));
 }
@@ -44,7 +42,9 @@ function obtenerIniciales($nombre) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CEN - Panel de Preces</title>
+    <!-- Fuente Outfit -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Iconos FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -77,7 +77,7 @@ function obtenerIniciales($nombre) {
             color: #333;
         }
 
-    
+      
         .top-navbar {
             background-color: var(--marron-oscuro);
             color: var(--blanco);
@@ -120,9 +120,9 @@ function obtenerIniciales($nombre) {
             gap: 6px;
         }
 
-        /* Contenedor Principal Expandido */
+       
         .main-layout {
-            max-width: 95%; /* Ocupa hasta el 95% de la pantalla */
+            max-width: 95%;
             width: 100%;
             margin: 25px auto;
             padding: 0 15px;
@@ -131,7 +131,6 @@ function obtenerIniciales($nombre) {
             flex-grow: 1;
         }
 
-        
         .sidebar {
             width: 280px;
             flex-shrink: 0;
@@ -239,7 +238,7 @@ function obtenerIniciales($nombre) {
             background-color: #fee2e2;
         }
 
-    
+        /* Área Blanca Principal Ampliada */
         .content-area {
             flex-grow: 1;
             background-color: var(--blanco);
@@ -286,7 +285,7 @@ function obtenerIniciales($nombre) {
             font-weight: 500;
         }
 
-    
+       
         .welcome-banner {
             background: linear-gradient(135deg, #fcfbfa 0%, #f7f4f0 100%);
             border: 1px solid #f0e9e1;
@@ -309,7 +308,7 @@ function obtenerIniciales($nombre) {
             line-height: 1.6;
         }
 
-    
+      
         .modules-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -352,9 +351,6 @@ function obtenerIniciales($nombre) {
             font-size: 0.82rem;
             line-height: 1.5;
         }
-
-       
-        
         @media (max-width: 1024px) {
             .main-layout {
                 max-width: 98%;
@@ -368,7 +364,6 @@ function obtenerIniciales($nombre) {
             }
         }
 
-    
         @media (max-width: 820px) {
             .top-navbar {
                 padding: 15px 20px;
@@ -395,10 +390,10 @@ function obtenerIniciales($nombre) {
     </style>
 </head>
 <body>
+
     <header class="top-navbar">
         <div>
             <div class="nav-brand-title">CEN • Panel de Preces</div>
-            <div class="nav-brand-sub">Portafolio de seguimiento — <?php echo htmlspecialchars($nombre_usuario); ?></div>
         </div>
         <div class="nav-badges">
             <span class="badge-pill"><i class="fa-solid fa-user-shield"></i> <?php echo htmlspecialchars($rol_usuario); ?></span>
@@ -406,8 +401,9 @@ function obtenerIniciales($nombre) {
         </div>
     </header>
 
-    <!-- Contenedor general expandido -->
+
     <div class="main-layout">
+
         <aside class="sidebar">
             <div class="user-profile-box">
                 <div class="user-avatar">
@@ -423,7 +419,7 @@ function obtenerIniciales($nombre) {
                 <a href="panel_prece.php" class="nav-item active">
                     <i class="fa-solid fa-house"></i> Inicio
                 </a>
-                <a href="#" class="nav-item">
+                <a href="formulario_inscripcion.php" class="nav-item">
                     <i class="fa-solid fa-file-lines"></i> Formulario
                 </a>
             </nav>
@@ -441,6 +437,7 @@ function obtenerIniciales($nombre) {
                 <i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar Sesión
             </a>
         </aside>
+
         <main class="content-area">
             <div class="content-header">
                 <div>
@@ -452,12 +449,13 @@ function obtenerIniciales($nombre) {
                 </div>
             </div>
 
-            <!-- Banner de Bienvenida -->
+      
             <div class="welcome-banner">
                 <h4>Bienvenida, <?php echo htmlspecialchars($nombre_usuario); ?> 👋</h4>
                 <p>Este espacio reúne tus recursos y formularios de seguimiento de estudiantes. Podés ir completando la información a lo largo del ciclo lectivo.</p>
             </div>
 
+      
             <div class="modules-grid">
                 
                 <div class="module-card">
